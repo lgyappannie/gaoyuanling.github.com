@@ -92,44 +92,12 @@
         <h3 id="python的int函数转化字符串为数字">python的<code>int函数转化字符串为数字</code></h3>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">1</span>]: int(<span class="string">'111'</span>)</div><div class="line">Out[<span class="number">1</span>]: <span class="number">111</span></div></pre></td></tr></table></figure>
 
-<p><more></more></p>
-<h3 id="那么我们如何自己实现这样一个强制类型的转化呢？">那么我们如何自己实现这样一个<code>强制类型</code>的转化呢？</h3>
-<ul>
-<li>传统的方法是这样的<ul>
-<li>遍历这个字符串</li>
-<li>逐个字符进行转化</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">21</span>]: def trans(x):</div><div class="line">   ....:     sum = <span class="number">0</span></div><div class="line">   ....:     <span class="keyword">for</span> i <span class="keyword">in</span> x:</div><div class="line">   ....:         i = ord(i) - ord(<span class="string">'0'</span>)</div><div class="line">   ....:         sum = sum * <span class="number">10</span> + i</div><div class="line">   ....:     <span class="keyword">return</span> sum</div><div class="line">   ....: </div><div class="line"></div><div class="line">In [<span class="number">22</span>]: trans(<span class="string">'2122'</span>)</div><div class="line">Out[<span class="number">22</span>]: <span class="number">2122</span></div></pre></td></tr></table></figure>
 
-<blockquote>
-<p>里面的ord(‘0’)是将字符串零转化成了ascii编码值，因为在python中字符与字符不能相减<br>不像<code>c语言和c++中</code>，字符可以直接相减就能得到差值</p>
-</blockquote>
-<hr>
-<h3 id="那么我们怎么进行简化呢">那么我们怎么进行简化呢</h3>
-<ul>
-<li>我们先看一个map函数，这个涉及到python函数式编程</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">29</span>]: def squaref(x):</div><div class="line">   ....:     <span class="keyword">return</span> x * x</div><div class="line">   ....: </div><div class="line"></div><div class="line">In [<span class="number">30</span>]: map(squaref, range(<span class="number">1</span>, <span class="number">5</span>))</div><div class="line">Out[<span class="number">30</span>]: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>]</div><div class="line"></div><div class="line">In [<span class="number">31</span>]: map(squaref, (<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>))</div><div class="line">Out[<span class="number">31</span>]: [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>]</div></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 这说明map函数的第二个参数可以是为list或者是tuple,那么可以为<code>str</code>类型呢？</p>
-</blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">37</span>]: def joinstr(x):</div><div class="line">   ....:     <span class="keyword">return</span> x + <span class="string">'   '</span></div><div class="line">   ....: </div><div class="line"></div><div class="line">In [<span class="number">38</span>]: map(joinstr, <span class="string">'xxxx'</span>)</div><div class="line">Out[<span class="number">38</span>]: [<span class="string">'x   '</span>, <span class="string">'x   '</span>, <span class="string">'x   '</span>, <span class="string">'x   '</span>]</div></pre></td></tr></table></figure>
-
-<blockquote>
-<p> 说明也是可以接受str类型的。</p>
-</blockquote>
-<ul>
-<li>接下来我们看一下reduce函数</li>
-</ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">43</span>]: def sumsum(x, y):</div><div class="line">   ....:     <span class="keyword">return</span> x + y</div><div class="line">   ....: </div><div class="line"></div><div class="line">In [<span class="number">45</span>]: reduce(sumsum, range(<span class="number">1</span>,<span class="number">101</span>))</div><div class="line">Out[<span class="number">45</span>]: <span class="number">5050</span></div></pre></td></tr></table></figure>
-
-<h3 id="那么我们接下来用map_reduce实现字符串的转化吧">那么我们接下来用map reduce实现字符串的转化吧</h3>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">In [<span class="number">48</span>]: def dictnum(x):                                              </div><div class="line">   ....:     <span class="keyword">return</span> {<span class="string">'0'</span>: <span class="number">0</span>, <span class="string">'1'</span>: <span class="number">1</span>, <span class="string">'2'</span>: <span class="number">2</span>, <span class="string">'3'</span>: <span class="number">3</span>, <span class="string">'4'</span>: <span class="number">4</span>, <span class="string">'5'</span>: <span class="number">5</span>, <span class="string">'6'</span>: <span class="number">6</span>, <span class="string">'7'</span>: <span class="number">7</span>, <span class="string">'8'</span>: <span class="number">8</span>, <span class="string">'9'</span>: <span class="number">9</span>}[x]</div><div class="line">   ....: </div><div class="line"></div><div class="line">In [<span class="number">49</span>]: reduce(lambda x, y:  x * <span class="number">10</span> + y, map(dictnum, <span class="string">'11111'</span>))</div><div class="line">Out[<span class="number">49</span>]: <span class="number">11111</span></div></pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2014/10/28/python_map_reduce/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
