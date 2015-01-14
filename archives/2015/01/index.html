@@ -69,6 +69,10 @@
   <time datetime="2015-01-14T05:37:38.000Z" itemprop="datePublished">Jan 14 2015</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -86,40 +90,17 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://oj.leetcode.com/problems/binary-search-tree-iterator/" target="_blank" rel="external">binary-search-tree-iterator</a></p>
-<blockquote>
-<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
-<p>Calling next() will return the next smallest number in the BST.</p>
-<p>Note: next() and hasNext() should run in average O(1) time and us&gt;es O(h) memory, where h is the height of the tree.</p>
-<p>Credits:<br>Special thanks to @ts for adding this problem and creating all test cases.</p>
-</blockquote>
+<p> Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p> Calling next() will return the next smallest number in the BST.</p>
+<p> Note: next() and hasNext() should run in average O(1) time and us&gt;es O(h) memory, where h is the height of the tree.</p>
+<p> Credits:<br> Special thanks to @ts for adding this problem and creating all test cases.</p>
 <hr>
-<ul>
-<li>题解</li>
-</ul>
-<blockquote>
-<p>这是一个二叉搜索树的遍历过程</p>
-</blockquote>
-<ul>
-<li>正常情况</li>
-</ul>
-<blockquote>
-<p>递归中序遍历一棵二叉搜索树，将得到一个有序的序列，但是空间复杂度为o(n),不符合题目的要求</p>
-</blockquote>
-<ul>
-<li><code>解决办法</code></li>
-</ul>
-<blockquote>
-<p>所以用非递归的办法中序遍历二叉树即可</p>
-</blockquote>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a  binary tree node</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span>:</span></div><div class="line">    <span class="comment"># @param root, a binary search tree's root node</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></div><div class="line">        self.stack = []</div><div class="line">        self.pushLeft(root)</div><div class="line"></div><div class="line">    <span class="comment"># @return a boolean, whether we have a next smallest number</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.stack</div><div class="line"></div><div class="line">    <span class="comment"># @return an integer, the next smallest number</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        top = self.stack.pop()</div><div class="line">        self.pushLeft(top.right)</div><div class="line">        <span class="keyword">return</span> top.val</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pushLeft</span><span class="params">(self, node)</span>:</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            self.stack.append(node)</div><div class="line">            node = node.left</div><div class="line"><span class="comment"># Your BSTIterator will be called like this:</span></div><div class="line"><span class="comment"># i, v = BSTIterator(root), []</span></div><div class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></div></pre></td></tr></table></figure>
 
-<hr>
-<ul>
-<li>自己建立了一棵二叉搜索树，然后测试了一下。</li>
-</ul>
-<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div></pre></td><td class="code"><pre><div class="line"><span class="comment">#!/env/python</span></div><div class="line"><span class="comment">#https://oj.leetcode.com/problems/binary-search-tree-iterator/</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">TreeNode</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, data)</span>:</span></div><div class="line">        self.val = data</div><div class="line">        self.left = <span class="keyword">None</span></div><div class="line">        self.right = <span class="keyword">None</span></div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">insert</span><span class="params">(self, data)</span>:</span></div><div class="line">        <span class="keyword">if</span> data &lt; self.val:</div><div class="line">            <span class="keyword">if</span> self.left <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">                self.left = TreeNode(data)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                self.left.insert(data)</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            <span class="keyword">if</span> self.right <span class="keyword">is</span> <span class="keyword">None</span>:</div><div class="line">                self.right = TreeNode(data)</div><div class="line">            <span class="keyword">else</span>:</div><div class="line">                self.right.insert(data)</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span>:</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></div><div class="line">        self.stack = []</div><div class="line">        self.pushLeft(root)</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.stack</div><div class="line">    </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        top = self.stack.pop()</div><div class="line">        self.pushLeft(top.right)</div><div class="line">        <span class="keyword">return</span> top.val</div><div class="line">        </div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pushLeft</span><span class="params">(self, node)</span>:</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            self.stack.append(node)</div><div class="line">            node = node.left</div><div class="line"></div><div class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</div><div class="line">    num = [<span class="number">2</span>, <span class="number">1</span>, <span class="number">5</span>, <span class="number">3</span>, <span class="number">4</span>]</div><div class="line">    root = TreeNode(num[<span class="number">0</span>])</div><div class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">1</span>, len(num)):</div><div class="line">        root.insert(num[i])</div><div class="line"></div><div class="line">    bsi = BSTIterator(root)</div><div class="line">    <span class="keyword">while</span> bsi.hasNext():</div><div class="line">         <span class="keyword">print</span> bsi.next()</div></pre></td></tr></table></figure>
-
-
+        
+          <p class="article-more-link">
+            <a href="/2015/01/14/binary-search-tree-iterator-leetcode/#more">Read More</a>
+          </p>
+        
       
     </div>
     <footer class="article-footer">
@@ -240,7 +221,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 

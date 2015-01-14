@@ -6,23 +6,20 @@
   <title>binary-search-tree-iterator-leetcode | 追逐远方的田野</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="binary-search-tree-iterator
-
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
-Calling next() will return the next smallest number i">
+ Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+ Calling next() will return the next smallest number">
 <meta property="og:type" content="article">
 <meta property="og:title" content="binary-search-tree-iterator-leetcode">
 <meta property="og:url" content="http://yoursite.com/2015/01/14/binary-search-tree-iterator-leetcode/">
 <meta property="og:site_name" content="追逐远方的田野">
 <meta property="og:description" content="binary-search-tree-iterator
-
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
-Calling next() will return the next smallest number i">
+ Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+ Calling next() will return the next smallest number">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="binary-search-tree-iterator-leetcode">
 <meta name="twitter:description" content="binary-search-tree-iterator
-
-Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
-Calling next() will return the next smallest number i">
+ Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.
+ Calling next() will return the next smallest number">
 
   
     <link rel="alternative" href="/atom.xml" title="追逐远方的田野" type="application/atom+xml">
@@ -76,6 +73,10 @@ Calling next() will return the next smallest number i">
   <time datetime="2015-01-14T05:37:38.000Z" itemprop="datePublished">Jan 14 2015</time>
 </a>
     
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
+  </div>
+
   </div>
   <div class="article-inner">
     
@@ -93,31 +94,24 @@ Calling next() will return the next smallest number i">
     <div class="article-entry" itemprop="articleBody">
       
         <p><a href="https://oj.leetcode.com/problems/binary-search-tree-iterator/" target="_blank" rel="external">binary-search-tree-iterator</a></p>
-<blockquote>
-<p>Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
-<p>Calling next() will return the next smallest number in the BST.</p>
-<p>Note: next() and hasNext() should run in average O(1) time and us&gt;es O(h) memory, where h is the height of the tree.</p>
-<p>Credits:<br>Special thanks to @ts for adding this problem and creating all test cases.</p>
-</blockquote>
+<p> Implement an iterator over a binary search tree (BST). Your iterator will be initialized with the root node of a BST.</p>
+<p> Calling next() will return the next smallest number in the BST.</p>
+<p> Note: next() and hasNext() should run in average O(1) time and us&gt;es O(h) memory, where h is the height of the tree.</p>
+<p> Credits:<br> Special thanks to @ts for adding this problem and creating all test cases.</p>
 <hr>
+<a id="more"></a>
+
 <ul>
-<li>题解</li>
-</ul>
-<blockquote>
+<li><p>题解</p>
 <p>这是一个二叉搜索树的遍历过程</p>
-</blockquote>
-<ul>
-<li>正常情况</li>
-</ul>
-<blockquote>
+</li>
+<li><p>正常情况</p>
 <p>递归中序遍历一棵二叉搜索树，将得到一个有序的序列，但是空间复杂度为o(n),不符合题目的要求</p>
-</blockquote>
-<ul>
-<li><code>解决办法</code></li>
-</ul>
-<blockquote>
+</li>
+<li><p><code>解决办法</code></p>
 <p>所以用非递归的办法中序遍历二叉树即可</p>
-</blockquote>
+</li>
+</ul>
 <figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># Definition for a  binary tree node</span></div><div class="line"><span class="comment"># class TreeNode:</span></div><div class="line"><span class="comment">#     def __init__(self, x):</span></div><div class="line"><span class="comment">#         self.val = x</span></div><div class="line"><span class="comment">#         self.left = None</span></div><div class="line"><span class="comment">#         self.right = None</span></div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">BSTIterator</span>:</span></div><div class="line">    <span class="comment"># @param root, a binary search tree's root node</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, root)</span>:</span></div><div class="line">        self.stack = []</div><div class="line">        self.pushLeft(root)</div><div class="line"></div><div class="line">    <span class="comment"># @return a boolean, whether we have a next smallest number</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">hasNext</span><span class="params">(self)</span>:</span></div><div class="line">        <span class="keyword">return</span> self.stack</div><div class="line"></div><div class="line">    <span class="comment"># @return an integer, the next smallest number</span></div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">next</span><span class="params">(self)</span>:</span></div><div class="line">        top = self.stack.pop()</div><div class="line">        self.pushLeft(top.right)</div><div class="line">        <span class="keyword">return</span> top.val</div><div class="line">    <span class="function"><span class="keyword">def</span> <span class="title">pushLeft</span><span class="params">(self, node)</span>:</span></div><div class="line">        <span class="keyword">while</span> node:</div><div class="line">            self.stack.append(node)</div><div class="line">            node = node.left</div><div class="line"><span class="comment"># Your BSTIterator will be called like this:</span></div><div class="line"><span class="comment"># i, v = BSTIterator(root), []</span></div><div class="line"><span class="comment"># while i.hasNext(): v.append(i.next())</span></div></pre></td></tr></table></figure>
 
 <hr>
@@ -158,7 +152,7 @@ Calling next() will return the next smallest number i">
   <div class="widget-wrap">
     <h3 class="widget-title">Categories</h3>
     <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/leetcode/">leetcode</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/life/">life</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/python/">python</a><span class="category-list-count">1</span></li></ul>
     </div>
   </div>
 
