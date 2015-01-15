@@ -3,23 +3,26 @@
 <head>
   <meta charset="utf-8">
   
-  <title>APUE学习有感 | 追逐远方的田野</title>
+  <title>sqrt_x-leetcode | 追逐远方的田野</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="APUE学习有感
+  <meta name="description" content="leetcode sqrt(x)
 
-学习APUE也有一两个月了，很不容易静下心来慢慢的看一本书。每天在实验室有各种各样的烂事要做，晚上有空看一看，也看到了快一大半。觉得这本书写的很有意思。">
+Implement int sqrt(int x).
+Compute and return the square root of x.">
 <meta property="og:type" content="article">
-<meta property="og:title" content="APUE学习有感">
-<meta property="og:url" content="http://yoursite.com/2015/01/08/apue_learning/">
+<meta property="og:title" content="sqrt_x-leetcode">
+<meta property="og:url" content="http://yoursite.com/2015/01/15/sqrt-x-leetcode/">
 <meta property="og:site_name" content="追逐远方的田野">
-<meta property="og:description" content="APUE学习有感
+<meta property="og:description" content="leetcode sqrt(x)
 
-学习APUE也有一两个月了，很不容易静下心来慢慢的看一本书。每天在实验室有各种各样的烂事要做，晚上有空看一看，也看到了快一大半。觉得这本书写的很有意思。">
+Implement int sqrt(int x).
+Compute and return the square root of x.">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="APUE学习有感">
-<meta name="twitter:description" content="APUE学习有感
+<meta name="twitter:title" content="sqrt_x-leetcode">
+<meta name="twitter:description" content="leetcode sqrt(x)
 
-学习APUE也有一两个月了，很不容易静下心来慢慢的看一本书。每天在实验室有各种各样的烂事要做，晚上有空看一看，也看到了快一大半。觉得这本书写的很有意思。">
+Implement int sqrt(int x).
+Compute and return the square root of x.">
 
   
     <link rel="alternative" href="/atom.xml" title="追逐远方的田野" type="application/atom+xml">
@@ -67,14 +70,14 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-apue_learning" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-sqrt-x-leetcode" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/01/08/apue_learning/" class="article-date">
-  <time datetime="2015-01-07T16:00:00.000Z" itemprop="datePublished">Jan 8 2015</time>
+    <a href="/2015/01/15/sqrt-x-leetcode/" class="article-date">
+  <time datetime="2015-01-15T04:47:16.000Z" itemprop="datePublished">Jan 15 2015</time>
 </a>
     
   <div class="article-category">
-    <a class="article-category-link" href="/categories/life/">life</a>
+    <a class="article-category-link" href="/categories/leetcode/">leetcode</a>
   </div>
 
   </div>
@@ -85,7 +88,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      APUE学习有感
+      sqrt_x-leetcode
     </h1>
   
 
@@ -93,17 +96,31 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="APUE学习有感">APUE学习有感</h2>
+        <p><a href="https://oj.leetcode.com/problems/sqrtx/" target="_blank" rel="external">leetcode sqrt(x)</a></p>
 <hr>
-<p>学习APUE也有一两个月了，很不容易静下心来慢慢的看一本书。<br>每天在实验室有各种各样的烂事要做，晚上有空看一看，也看到了快一大半。<br>觉得这本书写的很有意思。</p>
-<h2><a id="more"></a></h2>
-<p>希望自己坚持看下去，把代码都push到github上面。<br>看完之后再把《算法》看了，然后差不多就找实习，找工作咯。加油</p>
-<p>1/8/2015 9:30:00 PM </p>
+<p>Implement int sqrt(int x).</p>
+<p>Compute and return the square root of x.</p>
+<a id="more"></a>
+
+<ul>
+<li><p>方法一： 二分法</p>
+<p>  二分法求解。</p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt</span><span class="params">(x)</span>:</span></div><div class="line">    low = <span class="number">0</span></div><div class="line">    high = x</div><div class="line"></div><div class="line">    <span class="keyword">while</span> low &lt;= high :</div><div class="line">        mid = (low + high) / <span class="number">2</span></div><div class="line">        <span class="keyword">if</span> mid * mid &lt; x:</div><div class="line">            low = mid + <span class="number">1</span></div><div class="line">        <span class="keyword">elif</span> mid * mid == x:</div><div class="line">            <span class="keyword">return</span> mid</div><div class="line">        <span class="keyword">else</span>:</div><div class="line">            high = mid - <span class="number">1</span></div><div class="line">    <span class="keyword">return</span> high</div></pre></td></tr></table></figure>
+
+<ul>
+<li><p>方法二： 牛顿迭代法</p>
+<p>  <a href="http://zh.wikipedia.org/wiki/%E7%89%9B%E9%A1%BF%E6%B3%95" target="_blank" rel="external">牛顿迭代法</a></p>
+</li>
+</ul>
+<figure class="highlight"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">def</span> <span class="title">sqrt2</span><span class="params">(x)</span>:</span></div><div class="line">    res = <span class="number">1</span></div><div class="line">    <span class="keyword">while</span> <span class="keyword">not</span> ((res * res &lt; x)  <span class="keyword">and</span>   (res + <span class="number">1</span>) * (res + <span class="number">1</span>)) &gt; x <span class="keyword">and</span> <span class="keyword">not</span> (res * res == x):</div><div class="line">        <span class="keyword">if</span> res == <span class="number">0</span>:</div><div class="line">            <span class="keyword">break</span></div><div class="line">        last = res</div><div class="line">        res = (x / last + last) / <span class="number">2</span></div></pre></td></tr></table></figure>
+
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/01/08/apue_learning/" data-id="gz16snque11ch19b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/01/15/sqrt-x-leetcode/" data-id="7b8hpqhse55jd1dj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -112,19 +129,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/01/13/leetcode-Longest-Consecutive-Sequence/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Longest Consecutive Sequence -- leetcode
-        
-      </div>
-    </a>
   
-  
-    <a href="/2014/10/28/python_map_reduce/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/01/14/binary-search-tree-iterator-leetcode/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Python map reduce转化字符串为数字</div>
+      <div class="article-nav-title">binary-search-tree-iterator-leetcode</div>
     </a>
   
 </nav>
